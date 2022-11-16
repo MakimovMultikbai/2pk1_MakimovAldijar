@@ -11,6 +11,11 @@
             int x = int.Parse(Console.ReadLine());
             Console.WriteLine("Введите максимальное количество элементов в строчке массива:");
             int y = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+
+
+            Console.WriteLine("Массив: ");
             double[][] mass = new double[a][];
             for (int i = 0; i < mass.Length; i++)
             {
@@ -26,48 +31,100 @@
                 Console.WriteLine();
             }
             Console.WriteLine();
+
+
+
+            Console.WriteLine("Последний элемент из каждой строки: ");
             double[] end = new double[mass.Length];
-            for(int i = 0; i < end.Length; i++)
+            for (int i = 0; i < end.Length; i++)
             {
                 end[i] = mass[i][^1];
-                Console.Write(end[i]+"   ");
+                Console.Write(end[i] + "   ");
             }
             Console.WriteLine();
-            double[][] swap = new double[mass.Length][];
+            Console.WriteLine();
 
- 
-            double max;
-            double first = mass[0][0];
-            max = mass[0][0];
+
+
+            Console.WriteLine("Максимальное значение в каждой строке: ");
+            double[] max = new double[a];
+            double z;
             for (int i = 0; i < mass.Length; i++)
             {
-                max = mass[i][0];
+                z = mass[i][0];
                 for (int j = 1; j < mass[i].Length; j++)
                 {
-                    if (mass[i][j] > max)
-                        max = mass[i][j];
+                    if (mass[i][j] > z)
+                        z = mass[i][j];
+                    
                 }
-                first = mass[i][0];
-                for (int j = 0; j < mass[i].Length; j++)
-                {
-                    swap[i][0] = max;
-                    if (swap[i][j]==max)
-                    {
-                        swap[i][j] = first;
-                    }
-                }
-                Console.Write(max+"   ");
+                max[i] = z;
+                Console.Write(max[i]+"   ");
             }
             Console.WriteLine();
             Console.WriteLine();
-            for (int i = 0; i < swap.Length; i++)
+
+
+
+            Console.WriteLine("Массив с изменёнными значениями: ");
+            double d;
+            for (int i = 0; i < mass.Length; i++)
             {
-                for (int j = 0; j < swap[i].Length; j++)
+                d = mass[i][0];
+                
+                for (int j = 0; j < mass[i].Length; j++)
                 {
-                    Console.Write(swap[i][j]+"   ");
+                    if (mass[i][j] == max[i])
+                    {
+                        mass[i][j] = d;
+                    }
+                }
+                mass[i][0] = max[i];
+            }
+            for (int i = 0; i < mass.Length; i++)
+            {
+                for (int j = 0; j < mass[i].Length; j++)
+                {
+                    Console.Write(mass[i][j] + "   ");
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+
+            Console.WriteLine("Реверснутый массив: ");
+            for (int i = 0; i < a; i++)
+            {
+                Array.Reverse(mass[i]);
+            }
+            for (int i = 0; i < mass.Length; i++)
+            {
+                for (int j = 0; j < mass[i].Length; j++)
+                { 
+                    Console.Write(mass[i][j] + "   ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+
+            Console.WriteLine("Среднее значение каждой строки: ");
+            double e = 0;
+            for (int i = 0; i < mass.Length; i++)
+            {
+                for (int j = 0; j < mass[i].Length; j++)
+                {
+                    e += mass[i][j];
+                }
+                Console.Write(e / mass[i].Length+"   ");
+                e = 0; 
+            }
+            Console.WriteLine();
+            Console.WriteLine();
         }
     }
 }
